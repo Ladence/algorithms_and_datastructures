@@ -1,0 +1,5 @@
+﻿  main.cpp
+  graph_algs.cpp
+  Создание кода...
+main.obj : error LNK2019: ёё√ыър эр эхЁрчЁх°хээ√щ тэх°эшщ ёшьтюы "public: bool __thiscall Graph<int>::addEdge(int const &,int const &,double)" (?addEdge@?$Graph@H@@QAE_NABH0N@Z) т ЇєэъЎшш _main
+E:\Projects\interview_questions\╤++\Debug\╤++.exe : fatal error LNK1120: эхЁрчЁх°хээ√ї тэх°эшї ¤ыхьхэЄют: 1

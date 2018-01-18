@@ -44,7 +44,7 @@ public :
 	bool removeVertex(const T &vertex);
 	bool removeEdge(const T &source, const T &destination);
 
-	// Realised algorithms :
+	// Implemented algorithms :
 	std::vector<T> dfs();
 	std::vector<T> bfs();
 };

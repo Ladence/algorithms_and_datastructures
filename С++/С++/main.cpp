@@ -4,8 +4,8 @@
 
 int main() {
 	
-	std::vector<int> testArray = { 1,2,3,4,6,8,7,12 };
-	bubbleSort(testArray);
+	std::vector<int> testArray = { 0,-2,6,1,7,-1,2,3 };
+	mergeSort(testArray, 0, testArray.size() - 1);
 
 	for (auto it : testArray) {
 		std::cout << it << " ";

@@ -91,10 +91,70 @@ void bubbleSort(std::vector<int> &arr) {
 	}
 }
 
-void insertSort(std::vector<int> &arr) {
+void insertionSort(std::vector<int> &arr) {
+	int key;
 
+	for (int i = 1; i < arr.size(); i++) {
+		int j = i - 1;
+		key = arr[i];
+
+		while (j >= 0 && arr[j] > key) {
+			arr[j + 1] = arr[j];
+			j -= 1;
+		}
+		arr[j + 1] = key;
+	}
 }
 
-void mergeSort(std::vector<int> &arr) {
+void mergeSort(std::vector<int> &arr, int l, int r) {
+	if (l < r) {
+		int middle = l + (r - l) / 2;
+		mergeSort(arr, l, middle);
+		mergeSort(arr, middle + 1, r);
 
+		merge(arr, l, middle, r);
+	}
+}
+
+void merge(std::vector<int> &arr, int l, int m, int r) {
+	int boundFirst = m - l + 1;
+	int boundSecond = r - m;
+
+	std::vector<int> leftHalf, rightHalf;
+
+	for (int i = 0; i < boundFirst; i++) {
+		leftHalf.push_back(arr[i + l]);
+	}
+
+	for (int i = 0; i < boundSecond; i++) {
+		rightHalf.push_back(arr[i + m + 1]);
+	}
+
+	int k = l;
+	int i = 0;
+	int j = 0;
+	while (i < boundFirst && j < boundSecond) {
+		if (leftHalf[i] <= rightHalf[i]) {
+			arr[k] = leftHalf[i];
+			i++;
+		}
+		else {
+			arr[k] = rightHalf[j];
+			j++;
+		}
+		k++;
+	}
+
+	// Copy remainings
+	while (i < boundFirst) {
+		arr[k] = leftHalf[i];
+		i++;
+		k++;
+	}
+
+	while (j < boundSecond) {
+		arr[k] = rightHalf[j];
+		j++;
+		k++;
+	}
 }

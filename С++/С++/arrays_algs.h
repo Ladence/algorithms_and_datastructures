@@ -36,17 +36,30 @@ bool binarySearch(std::vector<int> arr, int val);
 
 /*
 	Bubble sort
-	O(n^2)
+	
+	Complexety : O(n^2)
 */
 void bubbleSort(std::vector<int> &arr);
 
 /*
-	Insertion sort
-	O(n^2)
+	Insertion sort.
+	Good works with small number of elements
+	
+	Complexety : O(n^2)
 */
-void insertSort(std::vector<int> &arr);
+void insertionSort(std::vector<int> &arr);
 
 /*
 	Merge sort
+
+	Complexety : Theta(n * log(n));
 */
-void mergeSort(std::vector<int> &arr);
+void mergeSort(std::vector<int> &arr, int l, int r);
+
+/*
+	Util function for merge sorting.
+	Merges two sorted halfs of array.
+
+	Complexety : O(n)
+*/
+void merge(std::vector<int> &arr, int l, int m, int r);

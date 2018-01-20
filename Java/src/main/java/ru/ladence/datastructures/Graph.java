@@ -2,6 +2,7 @@ package ru.ladence.datastructures;
 
 import com.sun.istack.internal.NotNull;
 
+import java.lang.reflect.GenericSignatureFormatError;
 import java.util.*;
 
 class Graph<T> {
@@ -107,14 +108,27 @@ class Graph<T> {
     }
 
 
-    void dfs(Vertex vertex) {
-        System.out.println(vertex);
-        Set<Vertex> adjVertices = getAdjVertices(vertex);
-        visited[(int)vertex.getData()] = true;
-        for (Vertex adjVertex : adjVertices) {
-            if (!visited[(int)adjVertex.getData()]) {
-                dfs(adjVertex);
+    private void dfsUtil(Vertex vertex, ArrayList<Integer> resultList) {
+        if (vertex.getData() instanceof Integer) {
+            resultList.add((Integer)vertex.getData());
+            Set<Vertex> adjVertices = getAdjVertices(vertex);
+            visited[(int) vertex.getData()] = true;
+            for (Vertex adjVertex : adjVertices) {
+                if (!visited[(int) adjVertex.getData()]) {
+                    dfsUtil(adjVertex, resultList);
+                }
             }
+        }
+    }
+
+
+    List<Integer> dfs(Vertex vertex) {
+        if (vertex.getData() instanceof Integer) {
+            ArrayList<Integer> resultArrayList = new ArrayList<>();
+            dfsUtil(vertex, resultArrayList);
+            return resultArrayList;
+        } else {
+            throw new GenericSignatureFormatError("Generics of this type is not supported. Only Integer!");
         }
     }
 
@@ -144,21 +158,26 @@ class Graph<T> {
         }
     }
 
-    void bfs(Vertex vertex) {
-        Queue<Vertex> queue = new Queue<>();
-        queue.push(vertex);
+    List<Integer> bfs(Vertex vertex) {
+        if (vertex.getData() instanceof Integer) {
+            ArrayList<Integer> result = new ArrayList<>();
+            Queue<Vertex> queue = new Queue<>();
+            queue.push(vertex);
 
-        while (!queue.isEmpty()) {
-            Vertex current = queue.pull();
-            System.out.println(current);
-            visited[(int)current.getData()] = true;
+            while (!queue.isEmpty()) {
+                Vertex current = queue.pull();
+                visited[(int) current.getData()] = true;
+                result.add((Integer) current.getData());
 
-            for (Vertex adjVertex : getAdjVertices(current)) {
-                if (!visited[(int)adjVertex.getData()]) {
-                    visited[(int)adjVertex.getData()] = true;
-                    queue.push(adjVertex);
+                for (Vertex adjVertex : getAdjVertices(current)) {
+                    if (!visited[(int) adjVertex.getData()]) {
+                        queue.push(adjVertex);
+                    }
                 }
             }
+            return result;
+        } else {
+            throw new GenericSignatureFormatError("Generics of this type doesn't support. Only Integer!");
         }
     }
 }

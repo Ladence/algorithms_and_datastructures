@@ -25,13 +25,13 @@ public class HashTable<K, V> {
     public V getValue(K key) {
         int bucketIndex = hash(key);
         LinkedList<Pair<K, V>> chain = bucket.get(bucketIndex);
-        ListNode<Pair<K, V>> chainCur = chain.head;
+        ListNode<Pair<K, V>> chainCur = chain.getHead();
 
         while (chainCur != null) {
-            if (chainCur.data.key.equals(key)) {
-                return chainCur.data.value;
+            if (chainCur.getData().key.equals(key)) {
+                return chainCur.getData().value;
             }
-            chainCur = chainCur.next;
+            chainCur = chainCur.getNext();
         }
 
         return null;
@@ -46,7 +46,7 @@ public class HashTable<K, V> {
         if (chain != null) {
             ListNode<Pair<K, V>> node = chain.search(insertable);
             if (node != null) {
-                node.data.value = insertable.value;
+                node.getData().value = insertable.value;
                 size++;
                 return;
             }

@@ -13,7 +13,7 @@ public class LinkedListTest {
         list.add("bar");
         list.add("baz");
 
-        Assert.assertTrue(list.search("bar"));
+        Assert.assertNotNull(list.search("bar"));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class LinkedListTest {
 
         list.remove("bar");
 
-        Assert.assertTrue(list.tail.data .equals("foo"));
+        Assert.assertTrue(list.getTail().getData().equals("foo"));
     }
 
     @Test
@@ -39,7 +39,7 @@ public class LinkedListTest {
             list.add(i);
         }
         list.remove(BOUND / 2);
-        Assert.assertFalse(list.search(BOUND/2));
+        Assert.assertNull(list.search(BOUND/2));
     }
 
     @Test
@@ -50,6 +50,6 @@ public class LinkedListTest {
         list.add("baz");
 
         list.remove("foo");
-        Assert.assertTrue(list.head.data.equals("bar"));
+        Assert.assertTrue(list.getHead().getData().equals("bar"));
     }
 }

@@ -1,25 +1,30 @@
 package ru.ladence.datastructures;
 
 
-public class LinkedList<T> {
-    ListNode<T> head, tail;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class LinkedList<T> implements Iterable<T> {
+
+    private ListNode<T> head, tail;
 
     void add(T data) {
         ListNode<T> insertable = new ListNode<>(data);
+
         if (head == null) {
             head = insertable;
             tail = head;
         } else {
-            tail.next = insertable;
-            tail = tail.next;
+            tail.setNext(insertable);
+            tail = tail.getNext();
         }
     }
 
     void remove(T data) {
         // deleting from beginning of list
-        if (head.data.equals(data)) {
-            if (head.next != null) {
-                head = head.next;
+        if (head.getData().equals(data)) {
+            if (head.getNext() != null) {
+                head = head.getNext();
             } else {
                 head = null;
             }
@@ -27,50 +32,92 @@ public class LinkedList<T> {
         }
 
 
-        ListNode cur = head.next;
+        ListNode cur = head.getNext();
         ListNode prev = head;
 
         while (cur != null) {
-            if (cur.data.equals(data)) {
-                prev.next = cur.next;
-                if (prev.next == null) {
+            if (cur.getData().equals(data)) {
+                prev.setNext(cur.getNext());
+                if (prev.getNext() == null) {
                     tail = prev;
                 }
             }
             prev = cur;
-            cur = cur.next;
+            cur = cur.getNext();
         }
     }
 
-    void printList() {
-        ListNode cur = head;
-        while (cur != null) {
-            System.out.print(cur.data.toString() + " -> ");
-            cur = cur.next;
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (T token : this) {
+            stringBuilder.append(token.toString()).append(" ");
         }
-
-        System.out.println(" X ");
+        return stringBuilder.toString();
     }
 
     ListNode<T> search(T data) {
         ListNode cur = head;
         while (cur != null) {
-            if (cur.data.equals(data)) {
+            if (cur.getData().equals(data)) {
                 return cur;
             }
-            cur = cur.next;
+            cur = cur.getNext();
         }
         return null;
     }
+
+    @Override
+    public Iterator iterator() {
+        return new LinkedListIterator(this);
+    }
+
+    public ListNode<T> getHead() {
+        return head;
+    }
+
+    public ListNode<T> getTail() {
+        return tail;
+    }
+
+
+    private class LinkedListIterator<T> implements Iterator<T> {
+        private ListNode<T> current;
+
+        LinkedListIterator(LinkedList list) {
+            current = list.getHead();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            } else {
+                T ret = current.getData();
+                current = current.getNext();
+                return ret;
+            }
+        }
+    }
 }
 
+
 class ListNode<T> {
-    T data;
-    ListNode next;
+    private T data;
+    private ListNode next;
 
     public ListNode(T data) {
         this.data = data;
         this.next = null;
+    }
+
+    public T getData() {
+        return data;
     }
 
     @Override
@@ -97,5 +144,17 @@ class ListNode<T> {
         return "ListNode{" +
                 "data=" + data +
                 '}';
+    }
+
+    public ListNode getNext() {
+        return next;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public void setNext(ListNode next) {
+        this.next = next;
     }
 }

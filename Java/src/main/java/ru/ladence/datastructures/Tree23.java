@@ -172,4 +172,32 @@ public class Tree23 {
 
         return null;
     }
+
+    Node searchMinInSubTree(Node p) {
+        if (p == null) return null;
+        if (p.first == null) return p;
+        else return searchMinInSubTree(p.first);
+    }
+
+    Node remove(Node p, int k) {
+        Node item = searchKey(p, k);
+        if (item == null) {
+            return p;
+        }
+
+        Node min;
+        if (item.key[0] == k) {
+            min = searchMinInSubTree(item.second);
+        } else {
+            min = searchMinInSubTree(item.third);
+        }
+
+        if (min != null) {
+
+        }
+
+        item.removeKey(k);
+        throw new UnsupportedOperationException();
+        //return fixTreeProperties(item);
+    }
 }

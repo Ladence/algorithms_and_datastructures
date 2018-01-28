@@ -1,12 +1,12 @@
 package ru.ladence.datastructures;
 
-public class BinarySearchTree<T extends Comparable> {
+class BinarySearchTree<T extends Comparable> {
     Node<T> root;
 
 
     /**
      * Insert new node to BST
-     * Complexety : O(logN)
+     * Avg Complexity : O(logN)
      * @param value key of new node
      */
     void insert(T value) {
@@ -30,6 +30,7 @@ public class BinarySearchTree<T extends Comparable> {
                 }
             }
 
+            parent = current;
             if (value.compareTo(current.getVal()) > 0) {
                 current = current.right;
                 if (current == null) {
@@ -64,7 +65,54 @@ public class BinarySearchTree<T extends Comparable> {
         return false;
     }
 
+    void inorderTraversal(Node root) {
+        if (root != null) {
+            inorderTraversal(root.left);
+            System.out.print(root.getVal() +  " ");
+            inorderTraversal(root.right);
+        }
+    }
 
+    void deleteKey(T key) {
+        root = delete(root, key);
+    }
+
+    private Node delete(Node root, T key) {
+        if (root == null) return null;
+
+        if (key.compareTo(root.getVal()) < 0) {
+            root.left = delete(root.left, key);
+        }
+
+        if (key.compareTo(root.getVal()) > 0) {
+            root.right = delete(root.right, key);
+        }
+
+        // founded key
+        if (key.compareTo(root.getVal()) == 0) {
+            // node with only one child or no child
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            }
+
+            // node with two children
+            root.setVal(getMinVal(root.right));
+
+            root.right = delete(root.right, (T)root.getVal());
+        }
+
+        return root;
+    }
+
+    T getMinVal(Node p) {
+        Node<T> temp = p;
+        while (temp.left != null) {
+            temp = temp.left;
+        }
+        return temp.getVal();
+    }
 }
 
 class Node<T extends Comparable> {
@@ -77,5 +125,9 @@ class Node<T extends Comparable> {
 
     T getVal() {
         return val;
+    }
+
+    public void setVal(T val) {
+        this.val = val;
     }
 }

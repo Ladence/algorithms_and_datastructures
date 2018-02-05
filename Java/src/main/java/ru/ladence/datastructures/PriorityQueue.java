@@ -16,9 +16,13 @@ class PriorityQueue<T extends Comparable> {
         this.actualSize = 0;
         this.data = genClass.cast(Array.newInstance(genClass.getComponentType(), maxSize));
     }
+
     /**
+     * Insert element to queue
      * High priority : max value
      * Low priority : min value
+     *
+     * @param val pushable value
      */
     void push(T val) {
         if (!isFull()) {
@@ -51,11 +55,15 @@ class PriorityQueue<T extends Comparable> {
 
     /**
      * Check fullness of queue
-     * @return true if full , else false
+     * @return true if full, else false
      */
     boolean isFull() {
         return actualSize == data.length;
     }
 
+    /**
+     * Check emptnes of queue
+     * @return true if empty, else false
+     */
     boolean isEmpty() {return actualSize == 0;}
 }

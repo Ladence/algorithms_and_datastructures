@@ -44,4 +44,19 @@ public class GraphTest {
 
         Assert.assertEquals(Arrays.asList(0, 2, 1, 3), graph.bfs(startVertex));
     }
+
+
+    @Test
+    public void findCycleTest() {
+        Graph<Integer> graph = new Graph<>();
+        graph.addVertex(0);
+        graph.addVertex(1);
+        graph.addVertex(2);
+
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(0, 2);
+
+        Assert.assertTrue(graph.haveCycle());
+    }
 }

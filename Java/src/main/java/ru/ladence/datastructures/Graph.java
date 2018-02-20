@@ -2,6 +2,7 @@ package ru.ladence.datastructures;
 
 import com.sun.istack.internal.NotNull;
 
+import javax.jnlp.IntegrationService;
 import java.lang.reflect.GenericSignatureFormatError;
 import java.util.*;
 
@@ -11,7 +12,7 @@ class Graph<T> {
     private Set<Edge> edges;
 
     // for DFS
-    private boolean[] visited;
+    private BitSet visited;
 
 
     Graph() {
@@ -19,7 +20,7 @@ class Graph<T> {
         edges = new HashSet<>();
         adjList = new HashMap<>();
 
-        visited = new boolean[100];
+        visited = new BitSet(100);
     }
 
 
@@ -95,15 +96,15 @@ class Graph<T> {
     }
 
 
-    public Map<Vertex, Set<Edge>> getAdjList() {
+    Map<Vertex, Set<Edge>> getAdjList() {
         return adjList;
     }
 
-    public Set<Vertex> getVertices() {
+    Set<Vertex> getVertices() {
         return vertices;
     }
 
-    public Set<Edge> getEdges() {
+    Set<Edge> getEdges() {
         return edges;
     }
 
@@ -112,9 +113,9 @@ class Graph<T> {
         if (vertex.getData() instanceof Integer) {
             resultList.add((Integer)vertex.getData());
             Set<Vertex> adjVertices = getAdjVertices(vertex);
-            visited[(int) vertex.getData()] = true;
+            visited.set((int) vertex.getData(), true);
             for (Vertex adjVertex : adjVertices) {
-                if (!visited[(int) adjVertex.getData()]) {
+                if (!visited.get((int) adjVertex.getData())) {
                     dfsUtil(adjVertex, resultList);
                 }
             }
@@ -166,11 +167,11 @@ class Graph<T> {
 
             while (!queue.isEmpty()) {
                 Vertex current = queue.pull();
-                visited[(int) current.getData()] = true;
+                visited.set((int) current.getData(), true);
                 result.add((Integer) current.getData());
 
                 for (Vertex adjVertex : getAdjVertices(current)) {
-                    if (!visited[(int) adjVertex.getData()]) {
+                    if (!visited.get((int) adjVertex.getData())) {
                         queue.push(adjVertex);
                     }
                 }
@@ -179,6 +180,63 @@ class Graph<T> {
         } else {
             throw new GenericSignatureFormatError("Generics of this type doesn't support. Only Integer!");
         }
+    }
+
+    List<Edge> findKruskalMst() {
+        List<Edge> result = new ArrayList<>();
+
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Disjoint Set Data Structure approach!
+     * @return true if current graph have cycle, else false
+     */
+    boolean haveCycle() {
+        int v = vertices.size();
+        int parent[] = new int[v];
+
+        for (int i = 0; i < v; i++) {
+            parent[i] = -1;
+        }
+
+        for (Edge edge : edges) {
+            int firstSet = findSubset(parent, (Integer)edge.getSource().getData());
+            int secondSet = findSubset(parent, (Integer)edge.getDestination().getData());
+
+            if (firstSet == secondSet) {
+                return true;
+            } else {
+                unionSubsets(parent, firstSet, secondSet);
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Util find function for disjoint data structure
+     * @param parent array of subsets
+     * @param i element
+     * @return num of subset
+     */
+    private int findSubset(int parent[], int i) {
+        if (parent[i] == -1) {
+            return i;
+        }
+        return findSubset(parent, parent[i]);
+    }
+
+    /**
+     * Util union function for disjoint data structure
+     * @param parent array of subsets
+     * @param firstSet ind of first subset
+     * @param secondSet ind of sec subset
+     */
+    private void unionSubsets(int parent[], int firstSet, int secondSet) {
+        int xSet = findSubset(parent, firstSet);
+        int ySet = findSubset(parent, secondSet);
+        parent[xSet] = ySet;
     }
 }
 

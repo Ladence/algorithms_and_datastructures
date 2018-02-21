@@ -55,8 +55,8 @@ public class GraphTest {
 
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
-        graph.addEdge(0, 2);
+        //graph.addEdge(0, 2);
 
-        Assert.assertTrue(graph.haveCycle());
+        Assert.assertFalse(Graph.haveCycle(graph));
     }
 }

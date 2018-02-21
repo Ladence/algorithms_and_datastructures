@@ -182,32 +182,43 @@ class Graph<T> {
         }
     }
 
-    List<Edge> findKruskalMst() {
-        List<Edge> result = new ArrayList<>();
+    /**
+     * Find MST using Kruskal's algorithm
+     * @return list contains elements in MST
+     */
+    List findKruskalMst() {
+        List<Edge> result = new ArrayList<>(edges);
+        Collections.sort(result);
 
-        throw new UnsupportedOperationException();
+        for (Edge edge : result) {
+
+        }
+        return result;
     }
 
     /**
      * Disjoint Set Data Structure approach!
      * @return true if current graph have cycle, else false
      */
-    boolean haveCycle() {
-        int v = vertices.size();
-        int parent[] = new int[v];
+    boolean haveCycle(Graph graph) {
+        int v = graph.vertices.size();
+
+        Subset subsets[] = new Subset[v];
 
         for (int i = 0; i < v; i++) {
-            parent[i] = -1;
+            subsets[i] = new Subset();
+            subsets[i].parent = i;
+            subsets[i].rank = 0;
         }
 
         for (Edge edge : edges) {
-            int firstSet = findSubset(parent, (Integer)edge.getSource().getData());
-            int secondSet = findSubset(parent, (Integer)edge.getDestination().getData());
+            int firstSet = findSubset(subsets, (Integer)edge.getSource().getData());
+            int secondSet = findSubset(subsets, (Integer)edge.getDestination().getData());
 
             if (firstSet == secondSet) {
                 return true;
             } else {
-                unionSubsets(parent, firstSet, secondSet);
+                unionSubsets(subsets, firstSet, secondSet);
             }
         }
 
@@ -215,28 +226,51 @@ class Graph<T> {
     }
 
     /**
-     * Util find function for disjoint data structure
-     * @param parent array of subsets
+     * Util function to find set of element i
+     * uses path compression approach
+     * @param subsets array of subsets
      * @param i element
      * @return num of subset
      */
-    private int findSubset(int parent[], int i) {
-        if (parent[i] == -1) {
-            return i;
+    private int findSubset(Subset subsets[], int i) {
+        if (subsets[i].parent != i) {
+            subsets[i].parent = findSubset(subsets, subsets[i].parent);
         }
-        return findSubset(parent, parent[i]);
+        return subsets[i].parent;
     }
 
     /**
-     * Util union function for disjoint data structure
-     * @param parent array of subsets
+     * Util union function for disjoint data structure (Union by rank! for achieve O(log N))
+     * @param subsets array of subsets
      * @param firstSet ind of first subset
      * @param secondSet ind of sec subset
      */
-    private void unionSubsets(int parent[], int firstSet, int secondSet) {
-        int xSet = findSubset(parent, firstSet);
-        int ySet = findSubset(parent, secondSet);
-        parent[xSet] = ySet;
+    private void unionSubsets(Subset subsets[], int firstSet, int secondSet) {
+        int xSetRoot = findSubset(subsets, firstSet);
+        int ySetRoot = findSubset(subsets, secondSet);
+
+
+        /**
+         * @// TODO: 21.02.2018 Union control flow!
+         */
+        // attach smaller rank tree under root of high rank tree
+        if (subsets[xSetRoot].rank < subsets[ySetRoot].rank) {
+            subsets[xSetRoot].parent = ySetRoot;
+        } else if (subsets[xSetRoot].rank > subsets[ySetRoot].rank) {
+                subsets[ySetRoot].parent = xSetRoot;
+        } else {
+            subsets[ySetRoot].parent = xSetRoot;
+            subsets[ySetRoot].rank++;
+        }
+    }
+
+
+    /**
+     * Union-Find Data Structure
+     */
+    private static class Subset {
+       private int parent;
+       private int rank;
     }
 }
 
@@ -292,7 +326,7 @@ class Vertex<T> {
     }
 }
 
-class Edge {
+class Edge implements Comparable<Edge> {
     private static final int DEFAULT_WIDTH = 1;
 
     @NotNull
@@ -330,6 +364,10 @@ class Edge {
         return result;
     }
 
+    @Override
+    public int compareTo(Edge o) {
+        return Integer.compare(this.weight, o.weight);
+    }
 
     public Vertex getSource() {
         return source;
@@ -338,6 +376,8 @@ class Edge {
     public Vertex getDestination() {
         return destination;
     }
+
+
 
     @Override
     public String toString() {

@@ -57,6 +57,28 @@ public class GraphTest {
         graph.addEdge(1, 2);
         //graph.addEdge(0, 2);
 
-        Assert.assertFalse(Graph.haveCycle(graph));
+        Assert.assertFalse(graph.haveCycle());
+    }
+
+    @Test
+    public void findMstTest() {
+        Graph<Integer> weightedGraph = new Graph<>();
+        Vertex<Integer> v0 = new Vertex<>(0);
+        Vertex<Integer> v1 = new Vertex<>(1);
+        Vertex<Integer> v2 = new Vertex<>(2);
+        Vertex<Integer> v3 = new Vertex<>(3);
+
+        weightedGraph.addVertex(v0);
+        weightedGraph.addVertex(v1);
+        weightedGraph.addVertex(v2);
+        weightedGraph.addVertex(v3);
+
+        weightedGraph.addEdge(new Edge(v0, v1, 10));
+        weightedGraph.addEdge(new Edge(v0, v2, 6));
+        weightedGraph.addEdge(new Edge(v0, v3, 5));
+        weightedGraph.addEdge(new Edge(v1, v3, 15));
+        weightedGraph.addEdge(new Edge(v3, v2, 4));
+
+        System.out.println(Graph.findKruskalMst(weightedGraph));
     }
 }

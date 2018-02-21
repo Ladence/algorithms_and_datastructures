@@ -20,6 +20,10 @@ public class Runner{
 
         weightedGraph.addEdge(new Edge(v0, v1, 2));
         weightedGraph.addEdge(new Edge(v1, v2, 10));
+        weightedGraph.addEdge(new Edge(v2, v0, 10));
 
+
+        Graph MST = Graph.findKruskalMst(weightedGraph);
+        System.out.println(MST);
     }
 }

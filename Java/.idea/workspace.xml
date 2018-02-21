@@ -26,17 +26,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Runner.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
-              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GraphTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GraphTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/ladence/datastructures/GraphTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
+            <state relative-caret-position="194">
+              <caret line="63" column="16" lean-forward="false" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,14 +54,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Graph.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Graph.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Graph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="202" column="4" lean-forward="false" selection-start-line="202" selection-start-column="4" selection-end-line="202" selection-end-column="4" />
+            <state relative-caret-position="172">
+              <caret line="196" column="0" lean-forward="false" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
               <folding>
-                <element signature="e#9608#9609#0" expanded="true" />
-                <element signature="e#9669#9670#0" expanded="true" />
+                <element signature="e#10216#10217#0" expanded="true" />
+                <element signature="e#10277#10278#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -140,9 +140,9 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/GraphG.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Graph.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Runner.java" />
         <option value="$PROJECT_DIR$/src/test/java/ru/ladence/datastructures/GraphTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Graph.java" />
       </list>
     </option>
   </component>
@@ -619,9 +619,9 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.GraphTest" />
-        <item index="1" class="java.lang.String" itemvalue="Application.GraphG" />
-        <item index="2" class="java.lang.String" itemvalue="Application.Test" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Runner" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Runner" />
+        <item index="2" class="java.lang.String" itemvalue="Application.GraphG" />
+        <item index="3" class="java.lang.String" itemvalue="Application.Test" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.HashTableTest" />
       </list>
     </recent_temporary>
@@ -645,27 +645,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GraphTest - 2018.02.20 at 11h 03m 08s.xml">
-      <configuration name="GraphTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GraphTest - 2018.02.20 at 11h 03m 12s.xml">
-      <configuration name="GraphTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GraphTest - 2018.02.20 at 11h 04m 37s.xml">
-      <configuration name="GraphTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GraphTest - 2018.02.20 at 11h 10m 10s.xml">
-      <configuration name="GraphTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GraphTest - 2018.02.21 at 21h 10m 17s.xml">
-      <configuration name="GraphTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GraphTest - 2018.02.21 at 21h 10m 45s.xml">
-      <configuration name="GraphTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GraphTest - 2018.02.21 at 21h 11m 12s.xml">
-      <configuration name="GraphTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GraphTest - 2018.02.21 at 21h 11m 40s.xml">
       <configuration name="GraphTest" configurationId="JUnit" />
     </history-entry>
@@ -673,6 +652,27 @@
       <configuration name="GraphTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="GraphTest - 2018.02.21 at 21h 16m 34s.xml">
+      <configuration name="GraphTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GraphTest - 2018.02.21 at 22h 03m 55s.xml">
+      <configuration name="GraphTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GraphTest - 2018.02.21 at 22h 10m 35s.xml">
+      <configuration name="GraphTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GraphTest - 2018.02.21 at 22h 13m 05s.xml">
+      <configuration name="GraphTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GraphTest - 2018.02.21 at 22h 13m 47s.xml">
+      <configuration name="GraphTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GraphTest - 2018.02.21 at 22h 14m 01s.xml">
+      <configuration name="GraphTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GraphTest - 2018.02.21 at 22h 14m 49s.xml">
+      <configuration name="GraphTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GraphTest - 2018.02.21 at 22h 15m 17s.xml">
       <configuration name="GraphTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -732,8 +732,40 @@
           <properties />
           <option name="timeStamp" value="34" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Graph.java</url>
+          <line>246</line>
+          <properties />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Graph.java</url>
+          <line>216</line>
+          <properties />
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Graph.java</url>
+          <line>196</line>
+          <properties />
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Graph.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Graph.java</url>
+          <line>245</line>
+          <properties class="ru.ladence.datastructures.Graph" method="findSubset">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="39" />
+      <option name="time" value="44" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -900,24 +932,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Runner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/ladence/datastructures/GraphTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Tree23.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
@@ -928,11 +942,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="202" column="4" lean-forward="false" selection-start-line="202" selection-start-column="4" selection-end-line="202" selection-end-column="4" />
+        <state relative-caret-position="172">
+          <caret line="196" column="0" lean-forward="false" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
           <folding>
-            <element signature="e#9608#9609#0" expanded="true" />
-            <element signature="e#9669#9670#0" expanded="true" />
+            <element signature="e#10216#10217#0" expanded="true" />
+            <element signature="e#10277#10278#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/ladence/datastructures/Runner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/ladence/datastructures/GraphTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="63" column="16" lean-forward="false" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

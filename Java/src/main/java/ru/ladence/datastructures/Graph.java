@@ -23,6 +23,13 @@ class Graph<T> {
         visited = new BitSet(100);
     }
 
+    Graph(Graph graph) {
+        vertices = new HashSet<>(graph.vertices);
+        edges = new HashSet<>(graph.edges);
+        adjList = new HashMap<>(graph.adjList);
+
+        visited = new BitSet(100);
+    }
 
     boolean addVertex(T data) {
         return vertices.add(new Vertex(data));
@@ -186,22 +193,26 @@ class Graph<T> {
      * Find MST using Kruskal's algorithm
      * @return list contains elements in MST
      */
-    List findKruskalMst() {
-        List<Edge> result = new ArrayList<>(edges);
+    static Graph findKruskalMst(Graph graph) {
+        Graph subGraph = new Graph(graph);
+        List<Edge> result = new ArrayList<>(graph.edges);
         Collections.sort(result);
 
         for (Edge edge : result) {
-
+            if (subGraph.haveCycle()) {
+                subGraph.removeEdge(edge);
+            }
         }
-        return result;
+
+        return subGraph;
     }
 
     /**
      * Disjoint Set Data Structure approach!
      * @return true if current graph have cycle, else false
      */
-    boolean haveCycle(Graph graph) {
-        int v = graph.vertices.size();
+    boolean haveCycle() {
+        int v = vertices.size();
 
         Subset subsets[] = new Subset[v];
 
@@ -264,6 +275,15 @@ class Graph<T> {
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Edge edge : edges) {
+            stringBuilder.append(edge).append("\n");
+        }
+
+        return stringBuilder.toString();
+    }
 
     /**
      * Union-Find Data Structure

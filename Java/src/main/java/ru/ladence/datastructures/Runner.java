@@ -1,6 +1,8 @@
 package ru.ladence.datastructures;
 
 
+import java.util.List;
+
 /**
  * @// TODO: 20.01.2018 implement graph path algorithms
  */
@@ -23,7 +25,6 @@ public class Runner{
         weightedGraph.addEdge(new Edge(v2, v0, 10));
 
 
-        Graph MST = Graph.findKruskalMst(weightedGraph);
-        System.out.println(MST);
+        System.out.println(Graph.findKruskalMst(weightedGraph));
     }
 }

@@ -14,6 +14,7 @@ class Graph<T> {
     // for DFS
     private BitSet visited;
 
+    private int V, E;
 
     Graph() {
         vertices = new HashSet<>();
@@ -194,12 +195,16 @@ class Graph<T> {
      * @return list contains elements in MST
      */
     static Graph findKruskalMst(Graph graph) {
-        Graph subGraph = new Graph(graph);
+        Graph subGraph = new Graph();
         List<Edge> result = new ArrayList<>(graph.edges);
         Collections.sort(result);
 
         for (Edge edge : result) {
-            if (subGraph.haveCycle()) {
+            subGraph.addVertex(edge.getSource());
+            subGraph.addVertex(edge.getDestination());
+            subGraph.addEdge(edge);
+
+            if (subGraph.haveCycle(graph.vertices.size())) {
                 subGraph.removeEdge(edge);
             }
         }
@@ -208,11 +213,12 @@ class Graph<T> {
     }
 
     /**
-     * Disjoint Set Data Structure approach!
+     * To check cycle in graph.
+     * Disjoint Set Data Structure approach
+     * @param v vertex number
      * @return true if current graph have cycle, else false
      */
-    boolean haveCycle() {
-        int v = vertices.size();
+    boolean haveCycle(int v) {
 
         Subset subsets[] = new Subset[v];
 

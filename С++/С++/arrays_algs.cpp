@@ -77,8 +77,6 @@ bool binarySearch(std::vector<int> arr, int val) {
 	}
 
 	return false;
-
-	return false;
 }
 
 void bubbleSort(std::vector<int> &arr) {

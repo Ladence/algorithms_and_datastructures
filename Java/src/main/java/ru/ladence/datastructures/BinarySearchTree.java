@@ -127,7 +127,7 @@ class Node<T extends Comparable> {
         return val;
     }
 
-    public void setVal(T val) {
+    void setVal(T val) {
         this.val = val;
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BinaryMaxHeap <T extends Comparable> {
+class BinaryMaxHeap <T extends Comparable> {
     private List<T> list;
 
     BinaryMaxHeap(T []source) {

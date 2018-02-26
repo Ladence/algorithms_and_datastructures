@@ -20,6 +20,13 @@ public class LinkedList<T> implements Iterable<T> {
         }
     }
 
+    void reverse() {
+        /**
+         * @// TODO: 22.02.2018 implement reverse method
+         */
+        throw new UnsupportedOperationException();
+    }
+
     void remove(T data) {
         // deleting from beginning of list
         if (head.getData().equals(data)) {
@@ -30,7 +37,6 @@ public class LinkedList<T> implements Iterable<T> {
             }
             return;
         }
-
 
         ListNode cur = head.getNext();
         ListNode prev = head;

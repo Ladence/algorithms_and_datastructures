@@ -2,7 +2,7 @@ package ru.ladence.datastructures;
 
 import java.util.ArrayList;
 
-public class HashTable<K, V> {
+class HashTable<K, V> {
     // actual number of elements
     private int size;
     // array of chains

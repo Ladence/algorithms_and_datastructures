@@ -5,6 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MathProblems {
+
+    /**
+     * Problem :
+     * To find all solutions of a^3 + b^3 = c^3 + d^3 in range of [0, N]
+     * @param N right limit of range
+     */
     public static void findCubicSum(int N) {
         HashMap<Long, ArrayList<Pair>> storage = new HashMap<>();
 

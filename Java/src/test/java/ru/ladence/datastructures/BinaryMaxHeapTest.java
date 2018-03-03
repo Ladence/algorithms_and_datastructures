@@ -1,14 +1,31 @@
 package ru.ladence.datastructures;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BinaryMaxHeapTest {
 
+    private BinaryMaxHeap<Integer> heap;
+
+    @Before
+    public void init() {
+        heap = new BinaryMaxHeap<>(new Integer[]{2, 4, 5, 3, 7, -1, 2});
+    }
+
     @Test
     public void getFrontTest() {
-        BinaryMaxHeap<Integer> integerBinaryMaxHeap = new BinaryMaxHeap<>(new Integer[]{2, 4, 5, 3, 7, -1, 2});
+        Assert.assertEquals((Integer)7, heap.peek());
+        heap.add(7);
+    }
 
-        Assert.assertEquals((Integer)7, integerBinaryMaxHeap.getFront());
+
+    @Test
+    public void heapSortTest() {
+        List<Integer> result = heap.heapSort();
+        Assert.assertArrayEquals(new Integer[]{7, 5, 4, 3, 2, 2, -1}, result.toArray());
     }
 }

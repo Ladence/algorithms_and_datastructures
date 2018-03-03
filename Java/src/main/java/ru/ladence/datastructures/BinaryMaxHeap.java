@@ -8,14 +8,19 @@ class BinaryMaxHeap <T extends Comparable> {
     private List<T> list;
 
     BinaryMaxHeap(T []source) {
-        list = Arrays.asList(source);
+        list = new ArrayList<>(Arrays.asList(source));
         for (int i = list.size() / 2; i >= 0; i--) {
             heapify(i);
         }
     }
 
-    T getFront() {
-        return list.get(0);
+    T peek() {
+        T element = list.get(0);
+        list.remove(element);
+        if (size() != 0) {
+            heapify(0);
+        }
+        return element;
     }
 
     /**
@@ -76,5 +81,23 @@ class BinaryMaxHeap <T extends Comparable> {
 
     int size() {
         return list.size();
+    }
+
+
+    /**
+     * Sorts list
+     * Complexity : O(N logN)
+     * O(N) for inserting array and O(N logN) for extracting elements
+     * This implementation using space O(N) for result list. You can just omit this
+     * and use simple output for this
+     *
+     * @return sorted list
+     */
+    List heapSort() {
+        List<T> result = new ArrayList<>();
+        while (size() != 0) {
+            result.add(peek());
+        }
+        return result;
     }
 }

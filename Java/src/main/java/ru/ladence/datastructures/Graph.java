@@ -14,8 +14,6 @@ class Graph<T> {
     // for DFS
     private BitSet visited;
 
-    private int V, E;
-
     Graph() {
         vertices = new HashSet<>();
         edges = new HashSet<>();
@@ -118,14 +116,12 @@ class Graph<T> {
 
 
     private void dfsUtil(Vertex vertex, ArrayList<Integer> resultList) {
-        if (vertex.getData() instanceof Integer) {
-            resultList.add((Integer)vertex.getData());
-            Set<Vertex> adjVertices = getAdjVertices(vertex);
-            visited.set((int) vertex.getData(), true);
-            for (Vertex adjVertex : adjVertices) {
-                if (!visited.get((int) adjVertex.getData())) {
-                    dfsUtil(adjVertex, resultList);
-                }
+        resultList.add((Integer)vertex.getData());
+        Set<Vertex> adjVertices = getAdjVertices(vertex);
+        visited.set((int) vertex.getData(), true);
+        for (Vertex adjVertex : adjVertices) {
+            if (!visited.get((int) adjVertex.getData())) {
+                dfsUtil(adjVertex, resultList);
             }
         }
     }
@@ -137,7 +133,7 @@ class Graph<T> {
             dfsUtil(vertex, resultArrayList);
             return resultArrayList;
         } else {
-            throw new GenericSignatureFormatError("Generics of this type is not supported. Only Integer!");
+            throw new UnsupportedOperationException("Generics of this type is not supported. Only Integer!");
         }
     }
 
@@ -186,7 +182,81 @@ class Graph<T> {
             }
             return result;
         } else {
-            throw new GenericSignatureFormatError("Generics of this type doesn't support. Only Integer!");
+            throw new UnsupportedOperationException("Generics of this type doesn't support. Only Integer!");
+        }
+    }
+
+    /**
+     * Utility method for Dijkstra's algorithm
+     * To find the vertex with minimum distance value, from set of vertices which not yet included in SPT-set
+     * @param distances list of distances from defined root
+     * @param sptSet SPT - Set
+     * @return index of vertex with minimal distance
+     */
+    private static int minDistance(List<Integer> distances, BitSet sptSet) {
+        int min = Edge.INFINITE;
+        int minIndex = -1;
+
+        for (int i = 0; i < distances.size(); i++) {
+            if (!sptSet.get(i) && distances.get(i) <= min) {
+                min = distances.get(i);
+                minIndex = i;
+            }
+        }
+
+        return minIndex;
+    }
+
+    /**
+     * Dijkstra's algorithm to find shortest path from one vertex to all
+     * @param graph source graph
+     * @param root source vertex from which we have to find shortest paths
+     */
+    static void oneToAllVerticesShortPath(Graph graph, Vertex root) {
+        if (!(root.getData() instanceof Integer)) {
+            throw new UnsupportedOperationException("Generics of this type doesn't support. Only Integer!");
+        }
+
+        int V = graph.vertices.size();
+
+        // output set, contains distances from root to i
+        List<Integer> distances = new ArrayList<>();
+
+        // sptSet[i] if i vertex is included uin shortest path tree
+        BitSet sptSet = new BitSet(V);
+
+        for (int i = 0; i < V; i++) {
+            distances.add(Edge.INFINITE);
+            sptSet.set(i, false);
+        }
+
+        distances.set((int) root.getData(), 0);
+
+        for (int i = 0; i < V - 1; i++) {
+            int u = minDistance(distances, sptSet);
+
+            sptSet.set(u, true);
+
+            Integer uVer = u;
+            for (int v  = 0; v < V; v++) {
+                int curEdgeWeight = 0;
+                ArrayList<Vertex> vertices = new ArrayList<>(graph.vertices);
+                for (Object obj : graph.edges) {
+                    Edge edge = (Edge) obj;
+                    if (edge.getSource().equals(vertices.get(u))) {
+                        curEdgeWeight = edge.getWeight();
+                        break;
+                    }
+                }
+                if (!sptSet.get(v) && !(graph.vertices.stream().filter((uVer::equals)).findAny().orElse(null) == null)
+                        && distances.get(u) != Edge.INFINITE && (distances.get(u) + curEdgeWeight) < distances.get(v)) {
+                    distances.set(v, distances.get(u) + curEdgeWeight);
+                }
+            }
+        }
+
+        for (Integer distance : distances) {
+            System.out.println(distance);
         }
     }
 
@@ -354,6 +424,7 @@ class Vertex<T> {
 
 class Edge implements Comparable<Edge> {
     private static final int DEFAULT_WIDTH = 1;
+    static final int INFINITE = Integer.MAX_VALUE;
 
     @NotNull
     private Vertex source, destination;
@@ -403,7 +474,9 @@ class Edge implements Comparable<Edge> {
         return destination;
     }
 
-
+    public int getWeight() {
+        return weight;
+    }
 
     @Override
     public String toString() {

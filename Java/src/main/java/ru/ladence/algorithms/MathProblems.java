@@ -12,7 +12,7 @@ public class MathProblems {
      * @param N right limit of range
      */
     public static void findCubicSum(int N) {
-        HashMap<Long, ArrayList<Pair>> storage = new HashMap<>();
+        HashMap<Long, List<Pair>> storage = new HashMap<>();
 
         for (int i = 1; i <= N; i++) {
             for (int j = 1; j <= N; j++) {
@@ -23,7 +23,7 @@ public class MathProblems {
                         System.out.println(i + " " + j + " " + pair.a + " " + pair.b);
                     }
                 } else {
-                    ArrayList<Pair> list = new ArrayList<>();
+                    List<Pair> list = new ArrayList<>();
                     storage.put(sum, list);
                 }
 

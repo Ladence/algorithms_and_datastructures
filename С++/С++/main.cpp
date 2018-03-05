@@ -5,7 +5,7 @@
 int main() {
 	
 	std::vector<int> testArray = { 0,-2,6,1,7,-1,2,3 };
-	mergeSort(testArray, 0, testArray.size() - 1);
+	quickSort(testArray, 0, testArray.size() - 1);
 
 	for (auto it : testArray) {
 		std::cout << it << " ";

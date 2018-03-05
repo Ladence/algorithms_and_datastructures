@@ -1,7 +1,7 @@
 ﻿  arrays_algs.cpp
 e:\projects\interview_questions\с++\с++\arrays_algs.cpp(71): warning C4018: <: несоответствие типов со знаком и без знака
-e:\projects\interview_questions\с++\с++\arrays_algs.cpp(85): warning C4018: <: несоответствие типов со знаком и без знака
-e:\projects\interview_questions\с++\с++\arrays_algs.cpp(86): warning C4018: <: несоответствие типов со знаком и без знака
-e:\projects\interview_questions\с++\с++\arrays_algs.cpp(97): warning C4018: <: несоответствие типов со знаком и без знака
+e:\projects\interview_questions\с++\с++\arrays_algs.cpp(83): warning C4018: <: несоответствие типов со знаком и без знака
+e:\projects\interview_questions\с++\с++\arrays_algs.cpp(84): warning C4018: <: несоответствие типов со знаком и без знака
+e:\projects\interview_questions\с++\с++\arrays_algs.cpp(95): warning C4018: <: несоответствие типов со знаком и без знака
   С++.vcxproj -> E:\Projects\interview_questions\С++\Debug\С++.exe
   С++.vcxproj -> E:\Projects\interview_questions\С++\Debug\С++.pdb (Partial PDB)

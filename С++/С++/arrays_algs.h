@@ -27,7 +27,7 @@ void separateOddAndEvenIntegers(std::vector<int> &arr);
 
 
 /*
-	Supposed, that array is sorted (else don't work!);
+	Supposed, that array is sorted (else doesn't work!);
 
 	Complexety : O(log n);
 */
@@ -63,3 +63,11 @@ void mergeSort(std::vector<int> &arr, int l, int r);
 	Complexety : O(n)
 */
 void merge(std::vector<int> &arr, int l, int m, int r);
+
+
+/*
+	Quick sort.
+
+	Complexety : O(n * logn)
+*/
+void quickSort(std::vector<int> &arr, int low, int high);
